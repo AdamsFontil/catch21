@@ -23,4 +23,7 @@ def create_character(name, deposit):
   print('what is player', player)
   print('what is house', house)
   print(f'welcome {player.name} you have successfully deposited {deposit} into your account. You now have {player.bank} USD to play with. Have fun!')
+  player.hand_val(['a', 'j', 1])
+  player.hand_val([7, 'a', 1])
+  player.hand_val([])
   player_menu()
