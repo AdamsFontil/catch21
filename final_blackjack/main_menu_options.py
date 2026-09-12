@@ -1,12 +1,14 @@
 import sys
 from classes import Player, Players
+from account_menu import account_menu
 
 def player_menu():
   pass
 
 def quit_game():
   print('thanks for playing our game. See you next time!')
-  sys.exit
+  sys.exit #i don't think this does anything
+
 
 def more_info():
     print('Blackjack.py manual: The objective is to get as close to 21 as possible without going over, create a player, place bets, and try to win some money.')
@@ -18,12 +20,6 @@ def more_info():
 
 def create_character(name, deposit):
   player = Player(name, deposit)
-  house = Players('house')
-  print(f'sucess: {name} created and {deposit} added')
-  print('what is player', player)
-  print('what is house', house)
-  print(f'welcome {player.name} you have successfully deposited {deposit} into your account. You now have {player.bank} USD to play with. Have fun!')
-  player.hand_val(['a', 'j', 1])
-  player.hand_val([7, 'a', 1])
-  player.hand_val([])
-  player_menu()
+  computer = Players('house')
+  print(f'sucess: {player.name} created and {deposit} added you will be playing against the {computer.name}')
+  account_menu(player, computer)

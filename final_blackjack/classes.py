@@ -1,7 +1,7 @@
 class Players:
   def __init__(self, name):
     self.name = name
-    self.hands = []
+    self.hand = []
 
   def hand_val(self, arrayOfCards):
     if not arrayOfCards:
@@ -21,6 +21,9 @@ class Players:
     else:
       print(f'{self.name} has {hand_val[0]} or {hand_val[1]}')
 
+  def reset_hand(self):
+      self.hand = []
+
 class Player(Players):
   def __init__ (self, name, deposit):
     super().__init__(name)
@@ -32,7 +35,6 @@ class Player(Players):
     else:
       self.bank += amount
       print(f'sucessly deposited {amount} you now have {self.bank}')
-
 
   def withdraw(self, amount):
     if type(amount) != int or not (0 < amount <= 10000000):

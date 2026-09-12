@@ -10,8 +10,6 @@ def deal_card():
     val = choices(card_vals)
     suit = choices(suit_vals)
     card = (val, suit)
-    print('suit', suit)
-    print('val', val)
     if card not in cards_dealt:
       cards_dealt.append(card)
       return card
