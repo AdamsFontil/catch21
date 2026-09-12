@@ -9,6 +9,8 @@ class Players:
       return
     hand_val = [0, 0]
     for val in arrayOfCards:
+      #each card is a tuple with card val, and card suit. this line only returns num val of cards
+      val = str(val[0])
       if val in ('j', 'q', 'k'):
         hand_val = [hand_val[0] + 10, hand_val[1] + 10]
       elif val == 'a':
@@ -16,10 +18,7 @@ class Players:
       else:
         n = int(val)
         hand_val = [hand_val[0] + n, hand_val[1] + n]
-    if hand_val[0] == hand_val[1] or hand_val[1] > 21:
-      print(f'{self.name} has {hand_val[0]}')
-    else:
-      print(f'{self.name} has {hand_val[0]} or {hand_val[1]}')
+    return hand_val
 
   def reset_hand(self):
       self.hand = []

@@ -25,15 +25,19 @@ house = Players('computer')
 def play_round(player, house):
   for i in range(4):
     if i % 2 == 0:
-      print(f'only pc {i}')
       c_draw = deal_card()
       house.hand.append(c_draw)
     else:
       p_draw = deal_card()
       player.hand.append(p_draw)
-    print(f'i is {i}')
-  print(f': {player.name}, {player.hand}')
-  print(f'house: {house.name} {house.hand}, {house.hand[0]}')
+
+  c_hand_val = house.hand_val(house.hand[:1])
+  hand_val = player.hand_val(player.hand)
+  if hand_val[0] == hand_val[1] or hand_val[1] > 21:
+    print(f'The computer has {c_hand_val[0]} and you have {hand_val[0]}')
+  else:
+    print(f'The computer has {c_hand_val[0]} and you have {hand_val[0]} or {hand_val[1]}')
+
 
 
 
