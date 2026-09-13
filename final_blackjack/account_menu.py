@@ -1,10 +1,10 @@
 import main_menu_options
-from play_round import play_round
+from play_round import game_logic
 
 def account_menu(player, house):
-  print('Welcome to the account menu here you 1. view your account (b)alance, 2.(d)eposit funds, 3.(p)lay a round of blackjack, 4.(w)ithdraw funds,  5.(q)uit game')
+  print('Welcome to the account menu!')
   while True:
-    choice = str(input('what would you like to do: '))
+    choice = str(input('type (v)iew account, make a (d)eposit, (p)lace a bet, (w)ithdraw funds, (q)uit program: '))
     match choice:
       case 'b':
         print(f'{player.name} has {player.bank}')
@@ -19,8 +19,17 @@ def account_menu(player, house):
             account_menu(player)
       case 'p':
         print('playing round...')
-        play_round(player, house)
-        break
+        while True:
+          bet = int(input('How much would you like to bet? : '))
+          if bet > player.bank:
+            print(f'cannot bet more than you have. you have {player.bank} and you are betting {bet}.')
+            print('please place a lower bet, or make a deposit')
+            break
+          elif bet < 0 or type(bet) != int:
+            print('error: please place a bet that is a number greater than 0')
+          else:
+            game_logic(player, house, bet)
+            break
       case 'w':
         while True:
           amount = int(input('how much would you like to withdraw? '))
