@@ -16,34 +16,54 @@ def game_logic(player,house,bet):
 
   p_hand_val = player.hand_val(player.hand)
   c_hand_val = house.hand_val(house.hand[:1])
+  blackjack = determine_winner(player, house, c_hand_val)
+  print('blackjack', blackjack)
+  if blackjack:
+    print('you won!!!')
+    player.deposit(bet)
 
-  for i in range(15):
-    p_hand_val = player.hand_val(player.hand)
-    if p_hand_val[0] == 21 or p_hand_val[1] == 21:
-      print('p hand is', p_hand_val)
-      print('player has won!!!')
-      break
-    elif p_hand_val[0] != p_hand_val[1] and p_hand_val[1] <= 21:
-      print(f'1computer has {c_hand_val} and you have {p_hand_val[0]} or {p_hand_val[1]}')
-    elif p_hand_val[0] > 21:
-      print('p hand is', p_hand_val)
-      print('player has lost')
-      break
-    else:
-      print(f'2computer has {c_hand_val} and you have {p_hand_val[0]}')
-      print('p hand is', p_hand_val)
-
+  while blackjack == None:
     choice = str(input('please type to (h)it, (s)tay or (q)uit to continue : '))
     match choice:
       case 'h':
         draw_card(player)
+        winner = determine_winner(player, house, c_hand_val)
+        print('winner is ', winner)
+        if winner == player.name:
+          print('you won!!!')
+          player.deposit(bet)
+          break
+        elif winner == house.name:
+          print('busted')
+          player.withdraw(bet)
+          break
       case 's':
         print('s')
+        for i in range(5):
+          determine_winner(house, player, player.hand_val(player.hand))
+          draw_card(house)
       case 'q':
         print('quit')
         break
+      case _:
+        print('error: command not recognized')
 
 
+def determine_winner(player, opponent, op_hand_val):
+      hand_val = player.hand_val(player.hand)
+      if hand_val[0] == 21 or hand_val[1] == 21:
+        print(f'{player.name} hand is', hand_val)
+        print(f'{player.name} have won!!!')
+        return player.name
+      elif hand_val[0] != hand_val[1] and hand_val[1] <= 21:
+        print(f'{opponent.name} has {op_hand_val} and {player.name} have {hand_val[0]} or {hand_val[1]}')
+      elif hand_val[0] > 21:
+        print(f'{player.name} hand is', hand_val)
+        print('player has lost')
+        return opponent.name
+      else:
+        print(f'{opponent.name} has {op_hand_val} and {player.name} have {hand_val[0]}')
+        print(f'{player.name} hand is', hand_val)
 
 
   # while blackjack != True :
