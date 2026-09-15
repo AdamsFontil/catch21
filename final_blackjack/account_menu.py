@@ -45,7 +45,7 @@ def account_menu(player, house):
               print(f'error: cannot withdraw more than you have. Your bank {player.bank} is less than the {amount} amount')
             else:
               player.withdraw(amount)
-              account_menu(player)
+              break
           except ValueError:
             print('pls type a number')
       case 'q':

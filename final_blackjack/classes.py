@@ -11,9 +11,9 @@ class Players:
     for val in arrayOfCards:
       #each card is a tuple with card val, and card suit. this line only returns num val of cards
       val = str(val[0])
-      if val in ('j', 'q', 'k'):
+      if val in ('jack', 'queen', 'king'):
         hand_val = [hand_val[0] + 10, hand_val[1] + 10]
-      elif val == 'a':
+      elif val == 'ace':
         hand_val = [hand_val[0] + 1, hand_val[1] + 11]
       else:
         n = int(val)
@@ -33,7 +33,7 @@ class Player(Players):
       print('error: amount must be an integer between 0 and 10,000,000')
     else:
       self.bank += amount
-      print(f'sucessly deposited {amount} {self.name} now have ${self.bank} in the bank')
+      print(f'sucessly deposited {amount}, {self.name} now have ${self.bank} in the bank')
 
   def withdraw(self, amount):
     if type(amount) != int or not (0 < amount <= 10000000):
@@ -42,4 +42,4 @@ class Player(Players):
       print(f'error: cannot withdraw more than you have. Your bank {self.bank} is less than the {amount} amount')
     else:
       self.bank -= amount
-      print(f'sucessly withdrew {amount} you now have {self.bank}')
+      print(f'sucessly withdrew {amount}, {self.name} now have {self.bank}')

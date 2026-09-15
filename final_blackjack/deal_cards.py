@@ -1,7 +1,7 @@
 from random import choice
 
-card_vals = ['a', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'j', 'q', 'k']
-suit_vals = ['s', 'h', 'd', 'c']
+card_vals = ['ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king']
+suit_vals = ['spades', 'hearts', 'diamonds', 'clubs']
 
 cards_dealt = []
 
