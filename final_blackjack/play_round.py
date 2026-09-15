@@ -75,11 +75,6 @@ def determine_winner(player, opponent, op_hand_val):
         print(f'{opponent.name} has {op_hand_val} and {player.name} have {hand_val[0]}')
         print(f'{player.name} hand is', hand_val)
 
-player = Player('adams', 250)
-house = Players('computer')
-
 def draw_card(player):
     card = deal_card()
     player.hand.append(card)
-
-game_logic(player, house, 100)

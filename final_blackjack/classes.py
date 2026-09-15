@@ -33,7 +33,7 @@ class Player(Players):
       print('error: amount must be an integer between 0 and 10,000,000')
     else:
       self.bank += amount
-      print(f'sucessly deposited {amount} you now have {self.bank}')
+      print(f'sucessly deposited {amount} {self.name} now have ${self.bank} in the bank')
 
   def withdraw(self, amount):
     if type(amount) != int or not (0 < amount <= 10000000):
